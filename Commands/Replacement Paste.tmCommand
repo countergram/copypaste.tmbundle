@@ -35,7 +35,10 @@ from sys import stdout
 from commands import getoutput
 from os import environ
 environ['__CF_USER_TEXT_ENCODING'] = '0x1F5:0x8000100:0x8000100'
-stdout.write(getoutput('pbpaste').replace('\\', '\\\\').replace('$',r'\$'))
+
+# Insert as Snippet is required to make the indents work properly
+# But this means we have to escape three characters
+stdout.write(getoutput('pbpaste').replace('\\', '\\\\').replace('$',r'\$').replace("`", r"\`"))
 </string>
 	<key>fallbackInput</key>
 	<string>line</string>
